@@ -1,0 +1,144 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.testatoo</groupId>
+    <artifactId>testatoo-starter</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Testatoo::Starter</name>
+    <inceptionYear>2018</inceptionYear>
+
+    <description>Testatoo Starter</description>
+    <url>http://www.testatoo.org</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:Testatoo/testatoo-starter.git</connection>
+        <developerConnection>scm:git:git@github.com:Testatoo/testatoo-starter.git</developerConnection>
+        <url>http://github.com/Testatoo/testatoo-starter</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <groovy.version>2.4.13</groovy.version>
+        <jdk.version>1.8</jdk.version>
+        <testatoo.version>2.0.b28</testatoo.version>
+        <selenium.version>3.9.1</selenium.version>
+        <cucumber.version>1.2.5</cucumber.version>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>altus34</id>
+            <name>David Avenante</name>
+            <email>d.avenante@ovea.com</email>
+            <organization>Ovea</organization>
+            <organizationUrl>http://www.ovea.com/</organizationUrl>
+            <timezone>-5</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>junit4</module>
+        <module>junit4-cucumber</module>
+        <module>junit5</module>
+        <module>junit5-cucumber</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.6</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <invokeDynamic>false</invokeDynamic>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>addSources</goal>
+                            <goal>addTestSources</goal>
+                            <goal>compile</goal>
+                            <goal>compileTests</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-all</artifactId>
+                        <version>${groovy.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>0.0.6</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Testatoo Starter</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-html-reports</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                            <enableFlashCharts>false</enableFlashCharts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testatoo</groupId>
+            <artifactId>testatoo</artifactId>
+            <version>${testatoo.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testatoo</groupId>
+            <artifactId>testatoo-html5-bundle</artifactId>
+            <version>1.0.b1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>2.0.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
