@@ -16,6 +16,7 @@
         <junit.jupiter.version>5.2.0-M1</junit.jupiter.version>
         <junit.vintage.version>5.2.0-M1</junit.vintage.version>
         <junit.platform.version>1.2.0-M1</junit.platform.version>
+        <selenium.jupiter.version>2.1.1</selenium.jupiter.version>
     </properties>
 
     <artifactId>testatoo-starter-junit5</artifactId>
@@ -44,6 +45,12 @@
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
             <version>${junit.vintage.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>selenium-jupiter</artifactId>
+            <version>${selenium.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- Only required to run tests in an IDE that bundles an older version -->

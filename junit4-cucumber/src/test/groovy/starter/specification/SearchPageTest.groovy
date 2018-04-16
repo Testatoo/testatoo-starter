@@ -23,10 +23,10 @@ class SearchPageTest {
     }
 
     @Test
-    void should_contains_expected_elements() {
+    void should_contain_expected_elements() {
         Panel resultPanel = $('.results-page') as Div
 
-        searchField 'What are you looking for?' should { be visible }
+        searchField('What are you looking for?').should { be visible }
         resultPanel.should { be missing }
 
         type 'Testatoo'
